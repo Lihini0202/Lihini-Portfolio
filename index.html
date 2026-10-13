@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lihini Edirisingha | UI/UX, AI/ML and Research</title>
+<meta name="description" content="Lihini Edirisingha takes ideas people laugh off and makes them useful, across UI/UX design, AI/ML and published research.">
+<meta property="og:title" content="Lihini Edirisingha | UI/UX, AI/ML and Research">
+<meta property="og:description" content="Portfolio of Lihini Edirisingha: UI/UX design, AI/ML projects and published research.">
+<meta property="og:image" content="images/photo.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Lihini Edirisingha","jobTitle":"UI/UX Designer","address":{"@type":"PostalAddress","addressLocality":"Colombo","addressCountry":"LK"},"sameAs":["https://www.linkedin.com/in/lihini-edirisingha-a54799202","https://github.com/Lihini0202","https://www.researchgate.net/profile/Lihini-Edirisingha-4"]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: clean white page, pink used only as an accent; hero with photo, tabbed work, about with timeline. Light theme only, by request. */
+  :root {
+    color-scheme: light;
+    --bg: #FFFFFF;
+    --soft: #FDF6F8;
+    --pink: #E34F86;
+    --pink-light: #FCE4EC;
+    --ink: #1F1A1C;
+    --muted: #6E6468;
+    --line: #EFE7EA;
+    --font-display: "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    --wrap: 1100px;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 1.05rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 24px; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.025em; line-height: 1.1; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; border-radius: 8px; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 600; color: var(--pink); letter-spacing: .02em; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; font: 600 .96rem var(--font-body); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .btn-pink { background: var(--pink); color: #fff; }
+  .btn-pink:hover { background: #C93A70; }
+  .btn-line { border-color: var(--line); color: var(--ink); background: #fff; }
+  .btn-line:hover { border-color: var(--ink); }
+
+  /* Nav */
+  .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
+  .logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; text-decoration: none; }
+  .logo span { color: var(--pink); }
+  .nav ul { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; font-size: .95rem; font-weight: 500; }
+  .nav ul a { text-decoration: none; color: var(--muted); }
+  .nav ul a:hover { color: var(--ink); }
+  .nav .btn { padding: 10px 20px; }
+
+  /* Hero */
+  .hero { padding-block: 80px 72px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: 64px; align-items: center; }
+  .hero-text { min-width: 0; display: grid; gap: 22px; }
+  .hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.2rem); font-weight: 800; }
+  .hero h1 span { color: var(--pink); }
+  .story { color: var(--muted); font-size: 1.12rem; max-width: 46ch; }
+  .hero .intro { color: var(--muted); font-size: 1.15rem; max-width: 46ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+  .avail { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; color: var(--muted); }
+  .avail i { width: 8px; height: 8px; border-radius: 50%; background: #2DB37A; box-shadow: 0 0 0 4px #DDF4EA; }
+
+  .photo-wrap { position: relative; justify-self: center; width: 100%; max-width: 380px; }
+  .photo-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border-radius: 200px 200px 28px 28px; background: var(--pink-light); }
+  .photo { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 200px 200px 28px 28px; background: var(--soft); border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+  .photo svg { width: 60%; height: auto; }
+  .photo small { position: absolute; bottom: 16px; font-size: .8rem; color: var(--muted); }
+  /* Logos strip */
+  .strip { border-block: 1px solid var(--line); background: var(--soft); }
+  .strip .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 32px; padding-block: 24px; }
+  .strip div { display: grid; }
+  .strip b { font-family: var(--font-display); font-size: 1rem; }
+  .strip span { font-size: .85rem; color: var(--muted); }
+
+  /* Sections */
+  section { padding-block: 96px; }
+  .head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; margin-bottom: 44px; }
+  .head h2 { font-size: clamp(2rem, 4.2vw, 3rem); font-weight: 800; margin-top: 10px; }
+
+  .tabs { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+  .tab { font: 600 .94rem var(--font-body); color: var(--muted); background: none; border: 0; padding: 10px 22px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
+  .tab[aria-selected="true"] { background: var(--ink); color: #fff; }
+  .tab:not([aria-selected="true"]):hover { color: var(--ink); }
+
+  /* Projects */
+  .projects { display: grid; gap: 28px; }
+  .project { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 28px; overflow: hidden; text-decoration: none; background: #fff; transition: box-shadow .25s, transform .25s; }
+  .project:hover { transform: translateY(-3px); box-shadow: 0 28px 50px -32px rgba(227,79,134,.45); }
+  .shot { background: var(--soft); padding: 40px; display: grid; place-items: center; min-height: 340px; position: relative; }
+  .shot .tag { position: absolute; top: 16px; left: 16px; font-size: .75rem; color: var(--muted); background: #fff; border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; }
+  .info { padding: 44px; display: grid; gap: 14px; align-content: center; min-width: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: .8rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--pink-light); color: #B23266; }
+  .info h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; }
+  .info p { color: var(--muted); }
+  .metrics { display: flex; gap: 32px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 4px; }
+  .metrics b { display: block; font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; line-height: 1.1; }
+  .metrics span { font-size: .84rem; color: var(--muted); }
+  .read { font-weight: 600; color: var(--pink); display: inline-flex; gap: 6px; align-items: center; }
+  .read i { font-style: normal; transition: transform .2s; }
+  .project:hover .read i { transform: translateX(4px); }
+
+  /* Project previews: real screen recordings in a browser frame */
+  .browser { width: 100%; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 22px 44px -26px rgba(31,26,28,.4); border: 1px solid var(--line); }
+  .bar { display: flex; gap: 5px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+  .browser video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--soft); }
+
+  /* AI/ML */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { border: 1px solid var(--line); border-radius: 24px; padding: 30px; display: grid; gap: 12px; align-content: start; min-width: 0; transition: border-color .2s; }
+  .card:hover { border-color: var(--pink); }
+  .card h3 { font-size: 1.3rem; font-weight: 700; }
+  .card p { color: var(--muted); font-size: .98rem; }
+  .card a { font-weight: 600; color: var(--pink); text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+  .card .stats { display: flex; gap: 22px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 14px; }
+  .card .stats b { display: block; font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; line-height: 1.1; }
+  .card .stats span { font-size: .8rem; color: var(--muted); }
+  .card .stack { font-size: .85rem; color: var(--muted); }
+  .card .links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 4px; }
+
+  /* Research */
+  .papers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .paper { display: grid; grid-template-columns: 90px 1fr auto; gap: 6px 28px; padding-block: 28px; border-bottom: 1px solid var(--line); align-items: start; }
+  .year { font-family: var(--font-display); font-weight: 700; color: var(--muted); grid-row: span 2; }
+  .paper h3 { font-size: 1.25rem; font-weight: 700; min-width: 0; }
+  .paper p { color: var(--muted); grid-column: 2; }
+  .badge { grid-column: 3; grid-row: 1 / span 2; font-size: .8rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .badge.pub { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .paper .venue { display: block; font-weight: 600; color: var(--ink); font-size: .92rem; margin-bottom: 4px; }
+  .paper a { font-weight: 600; color: var(--pink); text-decoration: none; white-space: nowrap; }
+  .paper a:hover { text-decoration: underline; }
+
+  /* About */
+  .about { background: var(--soft); border-block: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .about-grid > div { min-width: 0; }
+  .about h2 { font-size: clamp(2rem, 4.2vw, 3rem); font-weight: 800; margin: 10px 0 22px; }
+  .about p { color: var(--muted); max-width: 52ch; }
+  .about p + p { margin-top: 14px; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .skills span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: .9rem; font-weight: 500; }
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 30px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .timeline li { position: relative; padding-left: 36px; display: grid; gap: 4px; }
+  .timeline li::before { content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid var(--pink); }
+  .timeline .when { font-size: .82rem; font-weight: 600; color: var(--pink); }
+  .timeline h3 { font-size: 1.15rem; font-weight: 700; }
+  .timeline p { font-size: .96rem; }
+
+  /* Process */
+  .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step { border: 1px solid var(--line); border-radius: 24px; padding: 30px; display: grid; gap: 10px; align-content: start; }
+  .process { grid-template-columns: 1fr; }
+  .step h3 { display: none; }
+  .area-name { color: var(--pink); }
+  .flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: f; }
+  .flow li { counter-increment: f; display: grid; grid-template-columns: 30px 1fr; gap: 2px 12px; }
+  .flow li::before { content: counter(f); grid-row: span 2; width: 26px; height: 26px; border-radius: 50%; background: var(--pink-light); color: var(--pink); font: 700 .8rem var(--font-display); display: grid; place-items: center; }
+  .flow b { font-family: var(--font-display); font-size: 1rem; }
+  .flow span { color: var(--muted); font-size: .94rem; line-height: 1.5; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact h2 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; margin: 12px auto 0; max-width: 16ch; }
+  .contact h2 span { color: var(--pink); }
+  .contact .intro { color: var(--muted); margin: 18px auto 0; max-width: 46ch; font-size: 1.1rem; }
+  .email-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 32px; }
+  .email { padding: 13px 22px; border: 1.5px solid var(--line); border-radius: 999px; user-select: all; overflow-wrap: anywhere; font-weight: 500; }
+  .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; margin-top: 30px; }
+  .socials a { color: var(--muted); font-weight: 500; text-decoration: none; }
+  .socials a:hover { color: var(--pink); }
+
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-block: 28px; color: var(--muted); font-size: .88rem; }
+
+  @media (max-width: 900px) {
+    .nav ul { display: none; }
+    .hero .wrap, .about-grid { grid-template-columns: 1fr; gap: 56px; }
+    .photo-wrap { max-width: 320px; }
+    .flow { grid-template-columns: 1fr 1fr; }
+    .project { grid-template-columns: 1fr; }
+    .shot { min-height: 280px; }
+    .cards, .process { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding-inline: 16px; }
+    section { padding-block: 64px; }
+    .hero { padding-block: 48px 56px; }
+    .info, .shot { padding: 28px; }
+    .tabs { width: 100%; }
+    .tab { flex: 1; padding: 10px 6px; }
+    .paper { grid-template-columns: 1fr; }
+    .year, .paper p, .badge { grid-column: 1; grid-row: auto; }
+    .badge { justify-self: start; }
+    .nav .btn { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .project:hover { transform: none; } }
+
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 30%; }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a href="#top" class="logo">Lihini<span>.</span></a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-pink">Let's talk</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Hi, I'm Lihini.<br>I take ideas people <span>laugh off</span> and make them useful.</h1>
+      <p class="story">Ghosting on dating apps, meme stocks, hunting for new planets. I dig into ideas others don't take seriously and turn them into published research, AI systems and products people can use.</p>
+      <div class="actions">
+        <a href="#work" class="btn btn-pink">See my work</a>
+      </div>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo">
+        <img src="images/photo.jpg" alt="Lihini Edirisingha smiling and making a peace sign" width="800" height="800">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>WSO2</b><span>Engineering internship</span></div>
+    <div><b>IEEE</b><span>ICARC 2026</span></div>
+    <div><b>Springer Nature</b><span>ECRISA 2026</span></div>
+    <div><b>Elsevier</b><span>Under review</span></div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">Portfolio</span><h2>Selected work</h2></div>
+      <div class="tabs" role="tablist" aria-label="Work categories">
+        <button class="tab" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="true">UI/UX</button>
+        <button class="tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false">AI/ML</button>
+        <button class="tab" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false">Research</button>
+      </div>
+    </div>
+
+    <div class="projects" role="tabpanel" id="panel-design" aria-labelledby="tab-design">
+      <a href="work/holo.html" class="project">
+        <div class="shot">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i></div>
+            <video muted loop playsinline preload="none" data-src="videos/GhostGuard-Holo.mp4" aria-label="Screen recording of the Holo app"></video>
+          </div>
+        </div>
+        <div class="info">
+          <div class="chips"><span class="chip">Web app</span><span class="chip">Design + build</span><span class="chip">ML</span></div>
+          <h3>Holo: seeing when a chat goes cold</h3>
+          <p>Paste a chat or upload a screenshot and Holo tells you if the other person is pulling away, and why. Designed in Figma, built in Flutter and FastAPI, powered by my ghosting research.</p>
+          <div class="metrics">
+            <div><b>0.92</b><span>ROC-AUC</span></div>
+            <div><b>19,061</b><span>chats in training data</span></div>
+            <div><b>Live</b><span>web app</span></div>
+          </div>
+          <span class="read">Read case study <i>→</i></span>
+        </div>
+      </a>
+
+      <a href="work/nomination.html" class="project">
+        <div class="shot">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i></div>
+            <video muted loop playsinline preload="none" data-src="videos/Consent-Portal-Nominations.mp4" aria-label="Screen recording of the nomination flow"></video>
+          </div>
+        </div>
+        <div class="info">
+          <div class="chips"><span class="chip">Product UI</span><span class="chip">WSO2</span><span class="chip">Shipped</span></div>
+          <h3>Choosing who manages your data</h3>
+          <p>A nomination flow for WSO2's open-source consent portal, built around India's DPDP Act §14, so non-technical users can finish a legal process without help.</p>
+          <div class="metrics">
+            <div><b>23</b><span>languages</span></div>
+            <div><b>Live</b><span>merged to open source</span></div>
+          </div>
+          <span class="read">Read case study <i>→</i></span>
+        </div>
+      </a>
+
+      <a href="work/quayside.html" class="project">
+        <div class="shot">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i></div>
+            <video muted loop playsinline preload="none" data-src="videos/bastion-preview.mp4" aria-label="Screen recording of the Quayside site"></video>
+          </div>
+        </div>
+        <div class="info">
+          <div class="chips"><span class="chip">Marketing site</span><span class="chip">Email</span><span class="chip">Concept</span></div>
+          <h3>Quayside: a developer tool explained in one scroll</h3>
+          <p>Website, sign-up flow, onboarding and launch email for a fictional API gateway. Fully clickable in Figma, with the home page live in code.</p>
+          <div class="metrics">
+            <div><b>3</b><span>flows prototyped</span></div>
+            <div><b>100</b><span>Lighthouse SEO</span></div>
+          </div>
+          <span class="read">Read case study <i>→</i></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="cards" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai" hidden>
+      <article class="card">
+        <div class="chips"><span class="chip">Applied ML</span><span class="chip">Full stack</span></div>
+        <h3>Holo</h3>
+        <p>A logistic regression model that reads three signals in a chat (relative message length, return questions, reply rhythm) and sorts it into a ghosting-risk band. I chose it over gradient boosting because boosting ranked a clearly cold chat below a mildly cold one, and CI now checks that ordering on all 20 input combinations.</p>
+        <div class="stats">
+          <div><b>0.9154</b><span>held-out ROC-AUC</span></div>
+          <div><b>91.9%</b><span>ghosted in top band</span></div>
+        </div>
+        <p class="stack">scikit-learn · FastAPI · Celery · Supabase · Flutter</p>
+        <div class="links">
+          <a href="https://github.com/Lihini0202/holoapp" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://holo-tan.vercel.app/" target="_blank" rel="noopener">Live app →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="chips"><span class="chip">LLM evaluation</span></div>
+        <h3>AgentBench</h3>
+        <p>A controlled test of five agent setups, from one LLM call to a four-role pipeline, on real SWE-bench bugs with the same model. The extra agents fixed no more bugs and cost up to 4.5× the tokens. Getting a fair result meant first finding twelve harness failures that looked like model failures.</p>
+        <div class="stats">
+          <div><b>5</b><span>topologies compared</span></div>
+          <div><b>4.5×</b><span>tokens, no extra fixes</span></div>
+        </div>
+        <p class="stack">Python · SWE-bench · Gemini · pytest · Docker</p>
+        <div class="links">
+          <a href="https://github.com/Lihini0202/A-controlled-comparison-of-multi-agent-and-single-agent-topologies." target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="chips"><span class="chip">MLOps</span></div>
+        <h3>Physio exercise classifier</h3>
+        <p>Recognises which of 43 physiotherapy exercises a window of motion-sensor data shows, using 135 statistical and FFT features. Served in Streamlit, containerised with Docker, provisioned on Azure with Terraform, and gated by CI with tests and a Trivy security scan.</p>
+        <div class="stats">
+          <div><b>82.3%</b><span>test accuracy (XGBoost)</span></div>
+          <div><b>100%</b><span>test coverage</span></div>
+        </div>
+        <p class="stack">XGBoost · Streamlit · Docker · Terraform · GitHub Actions</p>
+        <div class="links">
+          <a href="https://github.com/Lihini0202/physio-exercise-classifier" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </article>
+    </div>
+
+    <ul class="papers" role="tabpanel" id="panel-research" aria-labelledby="tab-research" hidden>
+      <li class="paper">
+        <span class="year">2026</span>
+        <h3>Predicting Ghosting Risk in Dating Apps</h3>
+        <p><span class="venue">First author · Elsevier</span>Built a behavioural ML model from user interaction data, the core logic of the <a href="work/holo.html">Holo app</a>.</p>
+        <span class="badge">Under review</span>
+      </li>
+      <li class="paper">
+        <span class="year">2026</span>
+        <h3>Multi-Modal Meme Stock Predictor</h3>
+        <p><span class="venue">First author · ICARC 2026 (IEEE)</span>Multi-modal fusion system (ResNet-18, NLP) in PyTorch correlating social virality with market volatility. <a href="https://ieeexplore.ieee.org/document/11454013" target="_blank" rel="noopener">Read on IEEE Xplore →</a></p>
+        <span class="badge pub">Published</span>
+      </li>
+      <li class="paper">
+        <span class="year">2026</span>
+        <h3>ML Approaches for Exoplanet Detection</h3>
+        <p><span class="venue">First author · ECRISA 2026 (Springer Nature)</span>Compared XGBoost and CNNs on 5,087 Kepler objects, using Grad-CAM for model explainability. <a href="https://link.springer.com/chapter/10.1007/978-981-92-0423-6_1" target="_blank" rel="noopener">Read on Springer →</a></p>
+        <span class="badge pub">Published</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="kicker">About me</span>
+      <div data-area="tab-design">
+        <h2>A designer who can ship the code too</h2>
+        <p>I started on the engineering side, building features at WSO2. Working on privacy and consent screens showed me how much a clear interface matters when people make decisions about their own data.</p>
+        <p>Now I design in Figma, build in HTML, CSS, JavaScript and Flutter, and check everything with Lighthouse.</p>
+        <div class="skills">
+          <span>Figma</span><span>Prototyping</span><span>User flows</span><span>Design systems</span><span>HTML / CSS / JS</span><span>Flutter</span><span>Lighthouse</span>
+        </div>
+      </div>
+      <div data-area="tab-ai" hidden>
+        <h2>An engineer who tests the model before trusting it</h2>
+        <p>I like ML that has to work outside a notebook. For Holo I picked a simple model over a stronger-looking one because it kept risk in the right order, and I added a CI check so it stays that way.</p>
+        <p>When I compared multi-agent and single-agent LLM setups, half the work was finding harness bugs that looked like model failures. I ship with tests, Docker and CI so the numbers can be trusted.</p>
+        <div class="skills">
+          <span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>PyTorch</span><span>FastAPI</span><span>LLM evaluation</span><span>Docker</span><span>Terraform</span><span>GitHub Actions</span>
+        </div>
+      </div>
+      <div data-area="tab-research" hidden>
+        <h2>A researcher who starts with the odd question</h2>
+        <p>Ghosting, meme stocks, exoplanets. I pick questions people find funny or far away, then study them carefully enough to publish.</p>
+        <p>I'm first author on all three papers: two published with IEEE and Springer Nature, and one under review at Elsevier. I care about explaining why a model decides what it does, not just how accurate it is.</p>
+        <div class="skills">
+          <span>PyTorch</span><span>ResNet-18</span><span>NLP</span><span>CNNs</span><span>XGBoost</span><span>Grad-CAM</span><span>Explainable AI</span><span>Academic writing</span>
+        </div>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li>
+        <span class="when">2026</span>
+        <h3>Engineering Intern, WSO2</h3>
+        <p>Designed and built consent features for an open-source platform, including the nomination flow and support for 23 languages.</p>
+      </li>
+      <li>
+        <span class="when">2026</span>
+        <h3>First-author researcher</h3>
+        <p>Published with IEEE and Springer Nature on meme stocks and exoplanets, with ghosting prediction under review at Elsevier.</p>
+      </li>
+      <li>
+        <span class="when">2026</span>
+        <h3>BSc (Hons) Information Technology</h3>
+        <p>Horizon Campus, Sri Lanka.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="head"><div><span class="kicker">Process</span><h2>How I work on <span class="area-name" id="area-name">UI/UX</span></h2></div></div>
+    <div class="process">
+      <div class="step" data-area="tab-design">
+        <h3>UI/UX</h3>
+        <ol class="flow">
+          <li><b>Listen</b><span>Learn who the users are and what they need to get done.</span></li>
+          <li><b>Design</b><span>Sketch, then build clickable screens in Figma.</span></li>
+          <li><b>Build</b><span>Turn the design into fast, accessible code.</span></li>
+          <li><b>Improve</b><span>Test it with real people, then fix what's not working.</span></li>
+        </ol>
+      </div>
+      <div class="step" data-area="tab-ai" hidden>
+        <h3>AI/ML</h3>
+        <ol class="flow">
+          <li><b>Define</b><span>Pick a real problem and decide how to measure success.</span></li>
+          <li><b>Baseline</b><span>Start simple, so I know what "better" means.</span></li>
+          <li><b>Experiment</b><span>Try models and setups, tracking accuracy and cost.</span></li>
+          <li><b>Ship</b><span>Deploy what works, with tests and monitoring.</span></li>
+        </ol>
+      </div>
+      <div class="step" data-area="tab-research" hidden>
+        <h3>Research</h3>
+        <ol class="flow">
+          <li><b>Question</b><span>Start from something people actually struggle with.</span></li>
+          <li><b>Read</b><span>Find what's already known and where the gap is.</span></li>
+          <li><b>Study</b><span>Collect data, build a system, and test it fairly.</span></li>
+          <li><b>Publish</b><span>Write it up clearly and share it for review.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker">Contact</span>
+    <h2>Let's create something <span>beautiful</span> together.</h2>
+    <p class="intro">I'm looking for UI/UX and front-end roles. Email is the fastest way to reach me.</p>
+    <div class="email-row">
+      <span class="email" id="email">lihinisewmini12@gmail.com</span>
+      <button class="btn btn-pink" id="copy" type="button">Copy email</button>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/lihini-edirisingha-a54799202" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Lihini0202" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.researchgate.net/profile/Lihini-Edirisingha-4" target="_blank" rel="noopener">ResearchGate</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lihini Edirisingha</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    var map = { design: 'tab-design', ai: 'tab-ai', research: 'tab-research' };
+    function show(id) {
+      tabs.forEach(function (t) {
+        var on = t.id === id;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        if (on) document.getElementById('area-name').textContent = t.textContent;
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('[data-area]'), function (s) {
+        s.hidden = s.getAttribute('data-area') !== id;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(t.id); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        var next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        show(next.id); next.focus();
+      });
+    });
+    var h = (location.hash || '').replace('#', '');
+    if (map[h]) { show(map[h]); document.getElementById('work').scrollIntoView(); } else { show('tab-design'); }
+
+    // Project videos load only when scrolled into view, and pause when out of view
+    var vids = Array.prototype.slice.call(document.querySelectorAll('video[data-src]'));
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function wake(v) {
+      if (!v.src) { v.src = v.getAttribute('data-src'); v.preload = 'auto'; }
+      if (still) { v.currentTime = 1; } else { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) wake(en.target); else if (en.target.src) en.target.pause(); });
+      }, { rootMargin: '200px 0px' });
+      vids.forEach(function (v) { io.observe(v); });
+    } else {
+      vids.forEach(wake);
+    }
+
+    var btn = document.getElementById('copy');
+    btn.addEventListener('click', function () {
+      var el = document.getElementById('email');
+      function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); }
+      function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+      try { navigator.clipboard.writeText(el.textContent).then(done, fallback); } catch (e) { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>

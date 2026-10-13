@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holo | Lihini Edirisingha</title>
+<meta name="description" content="Case study: Holo, an app that predicts ghosting risk, designed and built from research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="../index.html" class="logo">Lihini<span>.</span></a>
+  <a href="../index.html#work" class="back">← All work</a>
+</div></nav>
+<main>
+<header class="wrap intro">
+  <div class="chips"><span class="chip">Web app</span><span class="chip">Design + build</span><span class="chip">Research</span></div>
+  <h1>Holo: seeing when a chat goes cold</h1>
+  <p class="lede">Everyone jokes about being ghosted. I studied it properly, built a model that predicts ghosting risk, and designed an app that turns that research into something people can use.</p>
+  <div class="meta">
+    <div><b>Role</b><span>Research, design and build</span></div><div><b>Tools</b><span>Figma, Flutter, FastAPI, Supabase, scikit-learn</span></div><div><b>Timeline</b><span>2026</span></div><div><b>Links</b><span><a href="https://holo-tan.vercel.app/" target="_blank" rel="noopener">Live app</a> · <a href="https://www.figma.com/proto/r9SN1vFEXNpGMEDaUYcz1g/Quayside-Marketing-site---email--concept-?node-id=54-1693&amp;p=f&amp;viewport=45%2C129%2C0.26&amp;t=uRKegkw5os4ZkX9f-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=54%3A1593&amp;show-proto-sidebar=1&amp;page-id=44%3A25010" target="_blank" rel="noopener">Figma</a> · <a href="https://github.com/Lihini0202/holoapp" target="_blank" rel="noopener">GitHub</a></span></div>
+  </div>
+</header>
+<div class="wrap"><div class="cover"><video src="../videos/GhostGuard-Holo.mp4" controls muted playsinline preload="metadata" aria-label="Walkthrough of the Holo app"></video></div></div>
+<section class="narrow block"><span class="label">The problem</span><h2>Ghosting feels random, but it isn't</h2><p>Conversations on dating apps often end without warning. My research showed there are patterns in how people interact before that happens. The challenge was showing a risk prediction in a way that feels helpful, not judgmental.</p></section>
+<section class="narrow block"><span class="label">Who it is for</span><h2>People using dating apps</h2><p>Anyone stuck wondering whether a match is losing interest. They paste the chat or upload a screenshot, and Holo shows a risk level with the signals behind it, so they can decide what to do next instead of overthinking it.</p></section>
+<section class="narrow block"><span class="label">What I did</span><h2>From research paper to working product</h2><ul>
+  <li>Built a behavioural ML model from user interaction data, trained on 19,061 conversations. The paper is under review at Elsevier.</li>
+  <li>Designed six screens in Figma: Analyze, Search, Coach, Insights, Validate and Profile.</li>
+  <li>Built the app in Flutter, with a FastAPI backend, Celery workers for slow OCR and model calls, and Supabase for data and sign-in.</li>
+  <li>Locked down every table with row-level security so people only ever see their own conversations.</li>
+</ul>
+<a class="proto" href="https://www.figma.com/proto/r9SN1vFEXNpGMEDaUYcz1g/Quayside-Marketing-site---email--concept-?node-id=54-1693&amp;p=f&amp;viewport=45%2C129%2C0.26&amp;t=uRKegkw5os4ZkX9f-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=54%3A1593&amp;show-proto-sidebar=1&amp;page-id=44%3A25010" target="_blank" rel="noopener">Open the Figma prototype →</a>
+</section>
+<section class="narrow block"><span class="label">Key decisions</span><h2>Why it looks the way it does</h2>
+<div class="decisions">
+  <div class="decision"><h3>Risk bands instead of percentages</h3><p>Even after calibration the model could be off by about 5 points, so a precise-looking "73%" would promise more than it knows. Bands like "Some warning signs" are honest and easier to read.</p></div>
+  <div class="decision"><h3>Show the reasons, not just the verdict</h3><p>Each result lists the signals behind it, such as shorter replies or fewer questions back, so the score never feels like a black box.</p></div>
+  <div class="decision"><h3>Kind wording, and a coach</h3><p>The app suggests what to do next instead of blaming anyone. The Coach screen helps rewrite a message that is unlikely to get a reply.</p></div>
+  <div class="decision"><h3>Ask what really happened</h3><p>About two weeks after an analysis, Holo asks whether the prediction was right. Those answers will let me check the model against real outcomes and retune it.</p></div>
+</div>
+</section>
+<section class="narrow block"><span class="label">Under the hood</span><h2>A simple model, on purpose</h2>
+<p>The model is a logistic regression using three signals: how long their messages are compared to yours, how often they ask questions back, and how steady their reply times are. I tried gradient boosting, but it ranked a clearly disengaged chat as safer than a mildly disengaged one. The simpler model keeps that order right, and CI checks it on all 20 input combinations.</p>
+<p>I also left out message count, even though it scored slightly higher on its own (0.924 AUC). Pasted excerpts are short no matter how the chat is going, so with it a healthy conversation scored 0.73 risk. Without it, the same chat scored 0.01.</p>
+</section>
+<section class="narrow block"><span class="label">Result</span><h2>What came out of it</h2>
+<div class="results"><div class="result"><b>0.9154</b><span>held-out ROC-AUC</span></div><div class="result"><b>91.9%</b><span>of top-band chats were ghosted</span></div><div class="result"><b>Elsevier</b><span>paper under review</span></div></div>
+</section>
+<div class="narrow"><div class="next">
+  <a href="../index.html#work" class="back">← Back to all work</a>
+  <a href="nomination.html"><small>Next project</small><span class="go">Nomination flow →</span></a>
+</div></div>
+
+</main>
+</body>
+</html>
